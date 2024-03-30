@@ -1,5 +1,5 @@
 ```c
-printC(String str, char color, int os)
+void printC(String str, char color, int os)
 ```
 
 (String, Color, Offset)
@@ -19,10 +19,33 @@ printC means print with Color, hence the name.
 
 
 ```c
-print(String str, int os)
+void print(String str, int os)
 ```
 
 "print" is the same deal, but it has no color.
 
+
+```c
+void clearScr()
+```
+Clears the screen
+
+
+```c
+void CHvidmalloc(int pos, char putter)
+```
+Allocates one character to a position in video memory.
+
+
+```c
+void CHvidmalloc(int pos, char putter, char color)
+```
+Allocates one character to a position in video memory but in color.
+
+
+```c
+int Ssizeof(String str)
+```
+Returns the actual size of a string.
 
 There is a `typedef char* String;` in utils.h.

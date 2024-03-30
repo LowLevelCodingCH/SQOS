@@ -1,10 +1,12 @@
-#include "../include/libc.h"
-#include "../include/stdint.h"
+#include "../cinclude/libc.h"
+#include "../cinclude/stdint.h"
+// #include "../cinclude/filesys.h"
 
 void main(){
-	printC("Nitrix> ", 0x0f, 0); // upper = bg, lower = fg
-	printC("Hi", 0x0f, 16); 
-	printC("Alol", 0x0f, 8 + 4 + 8); // 20
-	printC("Lpppp", 0x0f, 8 + 10 + 2 + 8); // 28
+	String clang = "The C programming language.";
+	int clanglen = Ssizeof(clang);
+	clearScr();
+	print(clang, 0);
+	print("hi", clanglen*2 + 2*2);
 	return;
 }
