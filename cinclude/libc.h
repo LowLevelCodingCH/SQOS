@@ -18,3 +18,4 @@ extern void NxPrint(String str, int os);
 extern void NxShutdown();
 extern void NxPrintLn(String str, int lines);
 extern void NxPrintLnC(String str, char color, int lines);
+extern void NxPerror(String error, int line);
