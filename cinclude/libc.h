@@ -15,6 +15,14 @@ char *vidmem = VIDEO_MEMORY;
 
 typedef char* String;
 
+
+void mcopy(String source, String dest, int no_bytes){
+    int i;
+    for ( i =0; i < no_bytes ; i ++) {
+        *( dest + i ) = *( source + i );
+    }
+}
+
 void StextMode(){
     NxTextMode();
 }
@@ -122,3 +130,10 @@ void print(String str, int os) {
 void keyboardInput(){
     NxKeyBoardInput();
 }
+/*
+void mcopyF(String source, String dest){
+    int i;
+    for ( i =0; i < Ssizeof(source) ; i ++) {
+        *( dest + i ) = *( source + i );
+    }
+}*/
