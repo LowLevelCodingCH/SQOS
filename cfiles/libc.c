@@ -1,4 +1,5 @@
 #define VIDEO_MEMORY 0xb8000
+#include "../cinclude/stdint.h"
 
 typedef char* String;
 
@@ -110,3 +111,20 @@ void NxShutdown(){
     NxHalt();
     return;
 }
+
+void NxPrintLn(String str, int lines){
+    if(NxSsizeof(str) % 2 == 0){NxPrint(str, 160*lines);}
+}
+
+void NxPrintLnC(String str, char color, int lines){
+    if(NxSsizeof(str) % 2 == 0){NxPrintC(str, color, 160*lines);}
+}
+
+void NxPerror(String error, int line){
+    NxPrintC(error, 0x0c, 160*line);
+}
+
+//void NxOutPortB(uint16_t portid, uint8_t value)
+//{
+//	asm volatile("outb %%al, %%dx": :"d" (portid), "a" (value));
+//}

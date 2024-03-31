@@ -16,3 +16,5 @@ extern void NxDelB(char filler, char color);
 extern void NxPrintC(String str, char color, int os);
 extern void NxPrint(String str, int os);
 extern void NxShutdown();
+extern void NxPrintLn(String str, int lines);
+extern void NxPrintLnC(String str, char color, int lines);
