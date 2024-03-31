@@ -1,5 +1,4 @@
 #pragma once
-#include <math.h>
 #include "stdint.h"
 #define VIDEO_MEMORY 0xb8000
 #define MAX_COLS 80
@@ -15,24 +14,6 @@ char *vidmem = VIDEO_MEMORY;
 // #include "keyboard.h"
 
 typedef char* String;
-
-
-float Q_rsqrt(float number) // original code, even with what the fuck, a nice word
-{
-  long i;
-  float x2, y;
-  const float threehalfs = 1.5F;
-
-  x2 = number * 0.5F;
-  y  = number;
-  i  = * ( long * ) &y;                       // evil floating point bit level hacking
-  i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
-  y  = * ( float * ) &i;
-  y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
-  // y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
-
-  return y;
-}
 
 void mcopy(String source, String dest, int no_bytes){
     int i;

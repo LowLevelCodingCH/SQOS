@@ -1,10 +1,29 @@
 [org 0x7c00]                        
 KERNEL_LOCATION equ 0x1000
                                     
+msgk: db "LOADING KERNEL... (kernel.o)",0
+
 
 mov [BOOT_DISK], dl                 
 
-                                    
+mov ah, 0x0e
+printM:
+    mov al, [msgk + bx]
+    int 0x10
+    cmp al, 0
+    je cont
+    inc bx
+    jmp printM
+
+
+cont:
+    mov cx, 0x0F
+    mov dx, 0x4240
+
+    mov ah, 0x86
+    int 0x15
+    mov ah, 0x86
+    int 0x15
 xor ax, ax                          
 mov es, ax
 mov ds, ax
