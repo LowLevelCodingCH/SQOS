@@ -1,1 +1,1 @@
-times 1000000 db 0
+times 100000 db 0

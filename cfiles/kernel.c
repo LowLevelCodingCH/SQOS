@@ -1,12 +1,19 @@
 #include "../cinclude/libc.h"
-#include "../cinclude/stdint.h"
-// #include "../cinclude/filesys.h"
+#include "../cinclude/filesys.h"
 
-void main(){
-	String clang = "The C programming language.";
-	int clanglen = Ssizeof(clang);
-	clearScr();
-	print(clang, 0);
-	print("hi", clanglen*2 + 2*2);
+void kernel(){
+	/*
+	String IRam = "Init RAM: [ OK ]";
+	String IMem = "Init MEM: [ OK ]";
+
+	fillS('-',0x3d);
+
+	printC(IRam, 0xca, 0);
+
+	printC(IMem, 0xca, Ssizeof(IRam) * 2 + Ssizeof(IMem) * 2);
+	*/
+
+	fillS('#',0xd3);
+	printC(read_file(2),0x0f,0);
 	return;
 }
