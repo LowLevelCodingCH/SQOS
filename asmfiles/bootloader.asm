@@ -22,8 +22,6 @@ cont:
 
     mov ah, 0x86
     int 0x15
-    mov ah, 0x86
-    int 0x15
 xor ax, ax                          
 mov es, ax
 mov ds, ax

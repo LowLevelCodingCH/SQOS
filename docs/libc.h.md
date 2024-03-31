@@ -126,3 +126,6 @@ Function: NxShutdown
     Description: Shuts down the operating system.
     Parameters: None
     Return Type: void
+
+
+Text will wrap around the rows, if you do (160*number_of_rows+offset) _offset has to be even_.
