@@ -2,9 +2,7 @@
 #include "../cinclude/filesys.h"
 
 void kernel(){
-	String src = "Argk";
-	String des;
-	mcopy(src, des, Ssizeof(src));
-	Fprint(des);
+	float k = Q_rsqrt(16);
+	Fprint("%d");
 	return;
 }
