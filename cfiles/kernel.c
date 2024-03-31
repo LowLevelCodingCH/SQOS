@@ -1,7 +1,7 @@
 #include "../cinclude/libc.h"
-#include "../cinclude/filesys.h"
 
 void kernel(){
-	Fprint("%d");
+	NxFprint("Hi");
+	NxDelB('-',0x0c);
 	return;
 }

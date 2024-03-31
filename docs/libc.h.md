@@ -1,71 +1,128 @@
 ```c
-void printC(String str, char color, int os)
+typedef char* String;
+extern void NxMcopy(String source, String dest, int no_bytes);
+extern int  NxStrCmp(char s1[], char s2[]);
+extern void NxFprint(String s);
+extern void NxHalt();
+extern int  NxSsizeof(String str);
+extern void NxCHvidmalloc(int pos, char putter);
+extern void NxClearScr();
+extern void NxCHvidmallocC(int pos, char putter, char color);
+extern void NxClearScrC(char color);
+extern void NxFillS(char filler, char color);
+extern void NxDelB(char filler, char color);
+extern void NxPrintC(String str, char color, int os);
+extern void NxPrint(String str, int os);
+extern void NxShutdown();
 ```
 
-(String, Color, Offset)
 
-Offset should equal the _length of the last string times 2_, the _length of the current string times 2_, and the _length of all other strings times 1 except the current and last ones_.
+Function: NxMcopy
 
-`(length of the last string * 2) + (length of the current string * 2) + (length of all other strings)`
+    Description: Copies a specified number of bytes from the source string to the destination string.
+    Parameters:
+        source: Pointer to the source string.
+        dest: Pointer to the destination string.
+        no_bytes: Number of bytes to be copied.
+    Return Type: void
 
-Colors: The upper 4 bits are the background, the lower 4 the foreground.
+Function: NxStrCmp
 
-```c
-//VV
-0x0f
-```
+    Description: Compares two strings s1 and s2 lexicographically.
+    Parameters:
+        s1: First string to compare.
+        s2: Second string to compare.
+    Return Type: int
+        Returns 0 if s1 is equal to s2.
+        Returns a value greater than 0 if s1 is lexicographically greater than s2.
+        Returns a value less than 0 if s1 is lexicographically less than s2.
 
-printC means print with Color, hence the name.
+Function: NxFprint
 
+    Description: Prints a string to the console.
+    Parameters:
+        s: String to be printed.
+    Return Type: void
 
-```c
-void print(String str, int os)
-```
+Function: NxHalt
 
-"print" is the same deal, but it has no color.
+    Description: Halts the execution of the program.
+    Parameters: None
+    Return Type: void
 
+Function: NxSsizeof
 
-```c
-void Fprint(String s)
-```
-Prints only once, good for a start.
-Does not work yet.
+    Description: Returns the size of the string.
+    Parameters:
+        str: String for which size is to be determined.
+    Return Type: int
+        Size of the string in bytes.
 
-```c
-void clearScr()
-```
-Clears the screen
+Function: NxCHvidmalloc
 
+    Description: Allocates memory at a specified position and fills it with a specified character.
+    Parameters:
+        pos: Position where memory is to be allocated.
+        putter: Character to fill the allocated memory.
+    Return Type: void
 
-```c
-void CHvidmalloc(int pos, char putter)
-```
-Allocates one character to a position in video memory.
+Function: NxClearScr
 
+    Description: Clears the screen.
+    Parameters: None
+    Return Type: void
 
-```c
-void CHvidmalloc(int pos, char putter, char color)
-```
-Allocates one character to a position in video memory but in color.
+Function: NxCHvidmallocC
 
+    Description: Allocates memory at a specified position, fills it with a specified character, and sets the color.
+    Parameters:
+        pos: Position where memory is to be allocated.
+        putter: Character to fill the allocated memory.
+        color: Color to set.
+    Return Type: void
 
-```c
-int Ssizeof(String str)
-```
-Returns the actual size of a string.
+Function: NxClearScrC
 
+    Description: Clears the screen with a specified color.
+    Parameters:
+        color: Color to clear the screen with.
+    Return Type: void
 
-```c
-void Halt()
-```
-Halts.
+Function: NxFillS
 
-```c
-int strcmp(char s1[], char s2[])
-```
-Compares two strings and returns zero if they are equal.
+    Description: Fills the screen with a specified character and color.
+    Parameters:
+        filler: Character to fill the screen with.
+        color: Color to set.
+    Return Type: void
 
-There is a `typedef char* String;` in utils.h.
+Function: NxDelB
 
-### Unsure:
-the file where i put stuff when idk if it works or not
+    Description: Fills a row from the screen with a specified color.
+    Parameters:
+        filler: Character to fill with.
+        color: Color to fill with.
+    Return Type: void
+
+Function: NxPrintC
+
+    Description: Prints a string with a specified color and offset.
+    Parameters:
+        str: String to be printed.
+        color: Color of the string.
+        offset: Offset value.
+    Return Type: void
+
+Function: NxPrint
+
+    Description: Prints a string with an offset value.
+    Parameters:
+        str: String to be printed.
+        offset: Offset value.
+    Return Type: void
+
+Function: NxShutdown
+
+    Description: Shuts down the operating system.
+    Parameters: None
+    Return Type: void
