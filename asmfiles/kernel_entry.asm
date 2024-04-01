@@ -1,5 +1,5 @@
 section .text
   [bits 32]
-  [extern kernel]
-  call kernel
+  [extern NxKernel]
+  call NxKernel
   jmp $

@@ -1,20 +1,46 @@
-[org 0x7c00]                        
-KERNEL_LOCATION equ 0x1000
-                                    
-msgk: db "LOADING KERNEL... (kernel.o)",0
-
-
-mov [BOOT_DISK], dl                 
+[org 0x7c00]                         
+mov [BOOT_DISK], dl                        
+msga: db 0x0a,0x0a,0x0a,0x0a,0x0a,0x0a,0x0a,0x0a,0x0a,0x0a,0x0a,0x0a,0x0a,"LOADING KERNEL-1... (nxkernel.o)",0
+msgb: db "NXBOOTLOADER",0xa,0x0
+printB:
+    mov ah, 0x0e
+    mov al, [msgb + bx]
+    int 0x10
+    cmp al, 0
+    je kbi
+    inc bx
+    jmp printB                
 
 mov ah, 0x0e
-printM:
-    mov al, [msgk + bx]
+
+kbi:
+    mov ah, 0
+    int 0x16
+    mov ah, 0x0e
+    int 0x10
+    pusha
+    mov al, ' '
+    int 0x10
+    popa
+    cmp al, '1'
+    je printA
+    cmp al, '2'
+    je printB ; other kernels
+    cmp al, '3'
+    je exit
+    cmp al, '4'
+    je printB
+    jmp kbi
+
+printA:
+    KERNEL_LOCATION equ 0x1000 
+    mov ah, 0x0e
+    mov al, [msga + bx]
     int 0x10
     cmp al, 0
     je cont
     inc bx
-    jmp printM
-
+    jmp printA
 
 cont:
     mov cx, 0x0F
@@ -102,6 +128,8 @@ start_protected_mode:
     jmp KERNEL_LOCATION
 
                                      
- 
+exit:
+    hlt
+    jmp exit
 times 510-($-$$) db 0              
 dw 0xaa55
